@@ -1,28 +1,35 @@
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
-const session = require('express-session')
+let createError = require('http-errors');
+let express = require('express');
+let path = require('path');
+let cookieParser = require('cookie-parser');
+let logger = require('morgan');
+
 const mongoose = require('mongoose')
 const mongoDBUrl = require('./config/mongoDBUrl')
 const expressLayout = require('express-ejs-layouts')
 
+//modules for authentication
+let session = require('express-session')
+let passport = require('passport')
+let passportLocal = require('passport-local')
+let localStrategy = passportLocal.Strategy;
+let flash = require('connect-flash');
+
 //set up mongodb
 mongoose.connect(mongoDBUrl.mongodbUrl, {useNewUrlParser: true, useUnifiedTopology: true})
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+let indexRouter = require('./routes/index');
+let usersRouter = require('./routes/users');
 
-var app = express();
+let app = express();
 
 //set up session
 app.set('trust proxy', 1)
 app.use(session({
-  secret: 'incrediable6',
+  secret: 'incredible6',
   cookie: {maxAge: 1000*60*60}, //1h
-  resave: false,
-  saveUninitialized: true
+  resave: true,
+  saveUninitialized: false
 }))
 
 //set up ejs layouts
