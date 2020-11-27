@@ -7,7 +7,7 @@ $('#addBtn').click(()=>{
     let mWinner = $('#mWinner').val()
     let mDescription = $('#mDescription').val()
 
-    $.post('/users/addTournament', {
+    $.post('/matches/addTournament', {
         mName: mName,
         mNumber:mNumber,
         mPlayers:mPlayers,
@@ -27,6 +27,7 @@ $('#addBtn').click(()=>{
             //clear form
             $('input').val('')
             $('textarea').val('')
+            location.reload(true);
         }else if(data==='-2'){
             //server error
             spop({
@@ -35,7 +36,7 @@ $('#addBtn').click(()=>{
                 style: 'error',
                 autoclose: 2000,
                     onClose: ()=>{
-                        window.location='/users/'
+                        window.location='/matches/'
                     }
             })
 

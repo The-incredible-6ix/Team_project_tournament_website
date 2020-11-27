@@ -20,10 +20,11 @@ mongoose.connect(mongoDBUrl.mongodbUrl, {useNewUrlParser: true, useUnifiedTopolo
 
 let indexRouter = require('./routes/index');
 let usersRouter = require('./routes/users');
+let matchesRouter = require('./routes/matches');
 
 let app = express();
 
-//set up session
+//set up express session
 app.set('trust proxy', 1)
 app.use(session({
   secret: 'incredible6',
@@ -31,6 +32,26 @@ app.use(session({
   resave: true,
   saveUninitialized: false
 }))
+
+//initialize flash
+app.use(flash());
+
+//initialize passport
+app.use(passport.initialize());
+app.use(passport.session());
+
+//passport user configuration
+
+//create a User Model Instance
+let userModel = require('./models/User');
+let User = userModel.User;
+
+//implement a User Authentication Strategy
+passport.use(User.createStrategy());
+
+//serialize and deserialize the User Info
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
 
 //set up ejs layouts
 // app.set('layout', './layouts/layout1')
@@ -51,6 +72,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/matches', matchesRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

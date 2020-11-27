@@ -9,7 +9,7 @@ $('#modifyBtn').click(()=>{
     let mWinner = $('#mWinner').val()
     let mDescription = $('#mDescription').val()
 
-    $.post('/users/modifyTournament', {
+    $.post('/matches/modifyTournament', {
         mId:mId,
         mName:mName,
         mNumber:mNumber,
@@ -26,18 +26,18 @@ $('#modifyBtn').click(()=>{
                 style: 'error',
                 autoclose: 2000,
                 onClose: ()=>{
-                    window.location='/users/'
+                    window.location='/matches'
                 }
             })
         }else if(data==='1'){
             //modify successfully
             spop({
-                template: 'Congrad! You have modified successfully.',
+                template: 'Congrats! You have modified successfully.',
                 position  : 'top-top-right',
                 style: 'success',
                 autoclose: 2000,
                 onClose: ()=>{
-                    window.location='/users/'
+                    window.location='/matches'
                 }
             })
         }

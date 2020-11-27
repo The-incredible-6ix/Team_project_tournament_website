@@ -22,7 +22,8 @@ exports.showMatchList = (req,res) =>{
 
         res.render('index', {
             column:'myTournament',
-            matches: matches
+            matches: matches,
+            displayName: req.user ? req.user.displayName : ''
         })
     })
 
@@ -98,25 +99,7 @@ exports.deleteTournament = (req,res) => {
         }
         matches[0].remove().then(()=>{
             //delete successfully
-            res.redirect('/users/')
+            res.redirect('/matches')
         })
-    })
-}
-
-/**
- * Show login form
- */
-exports.showLogin = (req,res) => {
-    return res.render('home', {
-        show: 'login'
-    })
-}
-
-/**
-* Show register form
-* */
-exports.showRegister = (req,res) => {
-    return res.render('home', {
-        show: 'register'
     })
 }
