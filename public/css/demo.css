@@ -4,7 +4,12 @@
     position: relative;
     width: 100%;
 }
-
+.bg.image {
+    background-image: url(teamLogo.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
 .tim-typo .tim-note {
     bottom: 5px;
     color: #c0c1c2;

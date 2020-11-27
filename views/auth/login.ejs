@@ -8,7 +8,7 @@
     <link rel="icon" type="image/png" href="/public/images/teamIcon.png">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <title>
-        Tournament Website
+        Login
     </title>
     <meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
     <!--     Fonts and icons     -->
@@ -21,6 +21,11 @@
     <!--font awesome-->
     <link rel="stylesheet" href="/public/css/all.css">
     <link rel="stylesheet" href="/public/css/spop.min.css">
+
+    <style>
+        body{
+            background: linear-gradient(to right, #08dbf7 0%, #f59419 100%);        }
+    </style>
 </head>
 
 <body class="">
@@ -35,23 +40,23 @@
     <div class="col-md-4"></div>
     <div class="col-md-4" >
         <!--show login form-->
-        <img src="/public/images/teamLogo.png" alt=""><p>Welcome to incredible tournament website</p>
-        <h2>Login</h2>
+        <img src="/public/images/teamLogo.png" alt=""><p style="color: black; font-weight: bolder;">Welcome to the Incredible Tournament Website</p>
+        <h2 style="font-weight: bolder;">Login</h2>
         <form action="" method="POST" autocomplete="off">
             <fieldset class="form-group">
-                <label for="username">Email Address: </label>
+                <label for="username" style="color: black;">Email Address: </label>
                 <input type="email" class="form-control"
-                name="username" placeholder="Enter username"
+                name="username"
                 id="username" required autofocus>
             </fieldset>
             
             <fieldset class="form-group">
-                <label for="password">Password</label>
+                <label for="password" style="color: black;">Password</label>
                 <input name="password" type="password" class="form-control" id="password" 
-                placeholder="Please enter your password" required>
+                required>
             </fieldset>
 
-            <p>No account yet? <a href="/register">Register now</a></p>
+            <p style="color: black;">No account yet? <a href="/register" style="color: navy;">Register now</a></p>
 
             <fieldset class="form-group text-right">
                 <input type="submit" class="btn btn-success" value="Login">
