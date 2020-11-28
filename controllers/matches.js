@@ -20,9 +20,24 @@ exports.showMatchList = (req,res) =>{
             return res.send('-2') //server error
         }
 
+        //create a color at random
+        let colorObj={
+            r : Math.floor(Math.random()*255),
+            g : Math.floor(Math.random()*255),
+            b : Math.floor(Math.random()*255),
+            a : 0.8
+        }
+
+        //get the first letter of the username
+        let firstLetter = req.session.username!==undefined?req.session.username.substring(0,1):''
+        
+
         res.render('index', {
             column:'myTournament',
             matches: matches,
+            color: colorObj,
+            firstLetter:firstLetter,
+            login: req.session.login,
             displayName: req.user ? req.user.displayName : ''
         })
     })

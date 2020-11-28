@@ -21,6 +21,7 @@
     <!--font awesome-->
     <link rel="stylesheet" href="/public/css/all.css">
     <link rel="stylesheet" href="/public/css/spop.min.css">
+    <link rel="stylesheet" href="/public/css/custom.css">
     </head>
 
 <body class="">
@@ -82,7 +83,12 @@
                     <ul class="navbar-nav">
                         <li class="nav-item dropdown">
                             <a class="nav-link" href="javascript:;" id="navbarDropdownProfile" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="material-icons">person</i>
+                                <% if(typeof displayName=== 'string' && displayName) { %>
+                                <div class='profileImg' style="background-color: rgba(<%=color.r%>, <%=color.g%>, <%=color.b%>, <%=color.a%>)"><%=firstLetter%></div>
+                                <% } else{ %>
+                                    <i class="material-icons">person</i>
+                                <% } %>
+
                                 <p class="d-lg-none d-md-block">
                                     Account
                                 </p>
@@ -112,8 +118,12 @@
                         <div class="card">
                             <div class="card-header card-header-primary">
                                 <h4 class="card-title" style="color: black; font-weight: 500;">Tournament management</h4>
+                                <% if(login===true) { %>
                                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                                    Create a tournament
+                                        Create a tournament
+                                    <% } else { %>
+                                        <a href="/login">Login to create a tournament</a>
+                                    <% } %>
                                 </button>
                                 <!-- Modal -->
                                 <div class="modal" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
