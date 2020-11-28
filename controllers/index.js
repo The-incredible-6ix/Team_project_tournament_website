@@ -10,22 +10,44 @@ let User = userModel.User; //alias
 let Match = require('../models/Match')
 
 exports.displayHomePage = (req,res) =>{
+    if(!req.session.login){
+        return res.redirect('/login')
+    }
     //get tournament list from db
     Match.find({}, (err, matches) => {
         if(err){
             return res.send('-2') //server error
         }
 
+        //create a color at random
+        let colorObj={
+            r : Math.floor(Math.random()*255),
+            g : Math.floor(Math.random()*255),
+            b : Math.floor(Math.random()*255),
+            a : 0.8
+        }
+
+        //get the first letter of the username
+        let firstLetter = req.session.username!==undefined?req.session.username.substring(0,1):''
+
+
         res.render('index', {
             column:'myTournament',
             matches: matches,
-            displayName: req.user ? req.user.displayName : ''
+            color: colorObj,
+            login: req.session.login,
+            firstLetter: firstLetter,
+            displayName: req.user ? req.session.username : ''
         })
     })
 
 }
 
 module.exports.displayLoginPage = (req, res, next) => {
+    if(req.session.login){
+        return res.redirect('/')
+    }
+
     // check if the user is already logged in
     if(!req.user)
     {
@@ -62,6 +84,10 @@ module.exports.processLoginPage = (req, res, next) => {
             {
                 return next(err);
             }
+
+            //store session data
+            req.session.username = user.username
+            req.session.login=true
 
             return res.redirect('/matches');
         });
@@ -131,7 +157,13 @@ module.exports.processRegisterPage = (req, res, next) => {
     });
 }
 
+/*Logout*/
 module.exports.performLogout = (req, res, next) => {
-    req.logout();
-    res.redirect('/matches');
+    if(!req.session.login){
+        return res.redirect('/login')
+    }
+    req.session.destroy(function(err) {
+        res.redirect('/login');
+
+    })
 }
