@@ -8,7 +8,7 @@ let matchSchema = new Schema({
     mNumber: String, //the number of players
     mPlayers: [String],
     mWinner: String,
-    mActiveTime: Date,
+    mActiveTime: String,
     mEndTime: Date,
     mIsActive: Boolean,
     mIsEnd: Boolean

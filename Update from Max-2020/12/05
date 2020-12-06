@@ -1,0 +1,9 @@
+## Update from Max on Final Release
+### Majoy updates:
++ Optimized the appearance of pages
++ Split the pages into two functional sub-pages
++ Adjusted the logic of pages
++ Users without logging in just can view the matches list
++ Each logged in users can only their registered tournaments only
++ Added some friendly tips when updating, deleting records
++ Added verification when creating or modifying the tournament

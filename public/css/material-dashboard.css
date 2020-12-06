@@ -13575,7 +13575,7 @@ label {
 select,
 select.form-control {
     -moz-appearance: none;
-    -webkit-appearance: none;
+    /*-webkit-appearance: none;*/
 }
 
 @media (min-width: 576px) {
