@@ -37,7 +37,7 @@
                 <li class="nav-item <% if(column==='myTournament'){ %>
                     active
                 <% } %>  ">
-                    <a class="nav-link" href="/users/">
+                    <a class="nav-link" href="/matches">
                         <i class="fas fa-football-ball"></i>
                         <p>Start my tournament</p>
                     </a>
@@ -45,7 +45,7 @@
                 <li class="nav-item <% if(column==='tournamentList'){ %>
                     active
                 <% } %>  ">
-                    <a class="nav-link" href="#">
+                    <a class="nav-link" href="/matches/management">
                         <i class="fas fa-tasks"></i>
                         <p>My tournament list</p>
                     </a>
@@ -64,13 +64,6 @@
         <!-- Navbar -->
         <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
             <div class="container-fluid">
-                <div class="navbar-wrapper">
-                    <a class="" href="javascript:;"><% if(column==='myTournament'){ %>
-                            Start my tournament
-                        <% }else if(column==='tournamentList'){ %>
-                            My tournament list
-                        <% } %></a>
-                </div>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="navbar-toggler-icon icon-bar"></span>
@@ -102,43 +95,39 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="addTitle">Modify my tournament</h5>
+                            <h5 class="modal-title" id="addTitle">Modify My Tournament</h5>
                         </div>
                         <div class="modal-body">
                             <input id="mId" type="text" value="<%= match._id %>" hidden>
                             <div class="form-group">
-                                <label for="mName">Tournament name</label>
+                                <label for="mName">What is the name of tournament?</label>
                                 <input name="mName" type="text" class="form-control" id="mName" aria-describedby="emailHelp" value="<%= match.mName %>">
                             </div>
 
                             <div class="form-group">
-                                <label for="mNumber">Number of players</label>
+                                <label for="mNumber">How many players are there?</label>
                                 <input name="mNumber" type="number" class="form-control" id="mNumber" value="<%= match.mNumber %>">
                             </div>
 
                             <div class="form-group">
-                                <label for="mPlayers">Players</label>
-                                <input name="mPlayers" type="text" class="form-control" id="mPlayers" value="<%= match.mPalyers %>">
+                                <label for="mPlayers">What are players names?</label>
+                                <input name="mPlayers" type="text" class="form-control" id="mPlayers" value="<%= match.mPlayers %>">
                             </div>
 
                             <div class="form-group">
-                                <label for="mActiveTime">Start time</label>
+                                <label for="mActiveTime">When does it start?</label>
                                 <input name="mActiveTime" type="date" class="form-control" id="mActiveTime" value="<%= match.mActiveTime %>">
                             </div>
 
-                            <div class="form-group">
-                                <label for="mWinner">Winner</label>
-                                <input name="mWinner" type="text" class="form-control" id="mWinner" value="<%= match.mWinner %>">
-                            </div>
 
                             <div class="form-group">
-                                <label for="mDescription">Description</label>
+                                <label for="mDescription">Wrtie a breif description?</label>
                                 <input name="mDescription" type="text" class="form-control" id="mDescription" value="<%= match.mDescription %>">
                             </div>
 
 
-                            <button class="btn btn-primary" id="modifyBtn">Save</button>
-                            <a class="btn btn-default" data-dismiss="modal" href="/matches">Cancel</a>
+                            <button class="btn btn-primary btn-sm" id="modifyBtn">Save</button>
+                            <button class="btn btn-default btn-sm" data-dismiss="modal" id="cancelBtn">Cancel</button>
                     </div>
                 </div>
             </div>
@@ -204,7 +193,7 @@
 <!-- Plugin for the momentJs  -->
 <script src="/public/js/moment.min.js"></script>
 <!--  Plugin for Sweet Alert -->
-<script src="/public/js/sweetalert2.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <!-- Forms Validations Plugin -->
 <script src="/public/js/jquery.validate.min.js"></script>
 <!-- Plugin for the Wizard, full documentation here: https://github.com/VinceG/twitter-bootstrap-wizard -->

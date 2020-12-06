@@ -20,8 +20,11 @@ function requireAuth(req, res, next)
 /*GET /users/ show dashboard*/
 // router.get('/', matchesController.showDashboard)
 
-/*GET /users/list  show tournaments list*/
+/*GET show tournaments list*/
 router.get('/', matchesController.showMatchList)
+
+/*GET show tournaments management list*/
+router.get('/management', matchesController.showMatchManagementList)
 
 /*POST add tournament to db*/
 router.post('/addTournament', requireAuth, matchesController.addTournament)
@@ -34,6 +37,9 @@ router.post('/modifyTournament/', requireAuth, matchesController.doModifyTournam
 
 /*GET /users/deleteTournament  delete selected tournament*/
 router.get('/deleteTournament/:_Id', requireAuth, matchesController.deleteTournament)
+
+/*POST select winner*/
+router.post('/winnerSelect/', requireAuth, matchesController.doSelectWinner)
 
 
 module.exports = router;

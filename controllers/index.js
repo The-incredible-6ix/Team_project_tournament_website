@@ -87,6 +87,7 @@ module.exports.processLoginPage = (req, res, next) => {
 
             //store session data
             req.session.username = user.username
+            req.session.displayName = user.displayName
             req.session.login=true
 
             return res.redirect('/matches');

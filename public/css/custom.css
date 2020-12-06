@@ -1,4 +1,7 @@
 /*custom css here*/
+.main-panel{
+	background:url('/public/images/bg.png');
+}
 .modal{
     z-index: 100;
 }
@@ -14,4 +17,47 @@
 	text-align: center;
 	font-size: 16px;
 	font-weight: bold;
+}
+
+th, td {
+	text-align: center;
+}
+h2{
+	text-align: center;
+}
+h3{
+	padding-left:10px;
+	color: white;
+}
+h4{
+	padding-left:15px;
+}
+h5{
+	padding-left:10px;
+	color: white;
+}
+.card{
+	margin-top:0;
+}
+#toBeDecided{
+	color: gray !important;
+}
+#winner{
+	color: goldenrod !important;
+	font-size: 32px;
+}
+#showMsg{
+	text-align: center;
+	font-size: 40px;
+	margin-bottom: 114px;
+	color: #fab220;
+}
+#showMsg2{
+	text-align: center;
+	font-size: 28px;
+	margin: 100px 114px 16px 114px;
+	color: #f9de9f;
+}
+#start-my-tournamentsBtn{
+	padding: 50px;
 }

@@ -61,7 +61,6 @@
                         <i class="fas fa-dice-six"></i>
                         <p>The Incredible 6ix</p>
                     </a>
-
                 </li>
             </ul>
         </div>
@@ -72,8 +71,7 @@
             <div class="container-fluid">
                 <div class="navbar-wrapper">
                     <a class="" style="font-weight:400;" href="javascript:;"><% if(column==='myTournament'){ %>
-<!--                            <h3>Welcome to TournaSmart</h3>-->
-<!--                            <h5>Manage your tournaments smartly</h5>-->
+                            Start my tournament
                         <% }else if(column==='tournamentList'){ %>
                             My tournament list
                         <% } %></a>
@@ -122,87 +120,135 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header card-header-primary">
-                                <h3>Welcome to TournaSmart</h3>
+                                <h3 class="card-title">Tournament management</h3>
                                 <h5>Manage your tournaments smartly</h5>
+                                <% if(login===true) { %>
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                                        Create a tournament
+                                    <% } else { %>
+<!--                                        <h4><a href="/login">Login to create a tournament</a></h4>-->
+                                    <% } %>
+                                </button>
+                                <!-- Modal -->
+                                <div class="modal" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="addTitle">Add a tournament</h5>
+                                            </div>
+                                            <div class="modal-body">
+                                                    <div class="form-group">
+                                                        <label for="mName">What is the name of your tournament?</label>
+                                                        <input autofocus name="mName" type="text" class="form-control" id="mName" aria-describedby="emailHelp">
+                                                    </div>
 
-                                <!-- Generated markup by the plugin -->
-                                <div class="tooltip top" role="tooltip">
-                                    <div class="tooltip-arrow"></div>
-                                    <div class="tooltip-inner">
-                                        Some tooltip text!
+                                                    <div class="form-group">
+                                                        <label for="mNumber">How many players?</label>
+                                                        <input name="mNumber" type="number" class="form-control" id="mNumber">
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label for="mPlayers">What are players names?</label>
+                                                        <input name="mPlayers" type="text" class="form-control" id="mPlayers">
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label for="mActiveTime">When does your tournament start?</label>
+                                                        <input name="mActiveTime" type="date" class="form-control" id="mActiveTime">
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label for="mDescription">Wrtie a short description?</label>
+                                                        <textarea name="mDescription" type="text" class="form-control" id="mDescription"></textarea>
+                                                    </div>
+
+
+                                                    <button class="btn btn-sm btn-primary" id="addBtn">Submit</button>
+                                                    <button class="btn btn-sm btn-default" data-dismiss="modal">Cancel</button>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="card-body">
-                                <div class="table-responsive">
-                                    <table class="table">
-                                        <thead class=" text-primary">
-                                        <th>
-                                            Tournament
-                                        </th>
-                                        <th>
-                                            Player Numbers
-                                        </th>
-                                        <th>
-                                            Players Names
-                                        </th>
-                                        <th>
-                                            Start Time
-                                        </th>
-                                        <th>
-                                            Winner
-                                        </th>
-                                        <th>
-                                            Sponsor
-                                        </th>
-                                        <th id="test">
-                                            Remaining
-                                        </th>
-                                        </thead>
-                                        <tbody>
-                                        <% for(let i =0; i < matches.length; i++){ %>
-                                        <tr>
-                                            <td>
-                                                <span class="details"
-                                                        id="details<%= i %>"
-                                                        data-mdescription="<%= matches[i].mDescription %>">
-                                                    <%= matches[i].mName %>
-                                                </span>
-                                            </td>
-                                            <td>
-                                                <%= matches[i].mNumber %>
-                                            </td>
-                                            <td>
-                                                <%= matches[i].mPlayers %>
-                                            </td>
-                                            <td>
-                                                <%= matches[i].mActiveTime %>
-                                            </td>
-                                                <% if(matches[i].mWinner === undefined) { %>
-                                                    <td class="text-primary" id="toBeDecided">
-                                                        To Be Decided
-                                                    </td>
-                                                <% } else{ %>
-                                                    <td class="text-primary" id="winner">
-                                                        <%= matches[i].mWinner %>
-                                                    </td>
-                                                <% } %>
-                                            <td>
-                                                <%= matches[i].mOwner %>
-                                            </td>
-                                            <td>
-                                                <% if(Math.ceil((new Date(matches[i].mActiveTime) - new Date())/1000/60/60/24)===0) { %>
-                                                    <b>Tournament is finished</b>
-                                                <% } else { %>
-                                                    <b><%= Math.ceil((new Date(matches[i].mActiveTime) - new Date())/1000/60/60/24) %></b>  days
-                                                <% }%>
-                                            </td>
-                                        </tr>
+                                <% if(!login) { %>
+<!--                                    <h2>Start My Tournaments Now</h2>-->
+                                    <h2 id="start-my-tournamentsBtn"><a class="btn btn-success btn-lg" href="/register">Start My Tournaments Now</a></h2>
+                                <% } else if(matches.length===0) { %>
+                                        <h4 id="showMsg2">You don't have any tournaments yet.</h4>
+                                        <h2 id="showMsg">Start your journey by creating a tournament</h2>
+                                <% } else { %>
+                                    <div class="table-responsive">
+                                            <table class="table">
+                                                <thead class=" text-primary">
+                                                <th>
+                                                    ID
+                                                </th>
+                                                <th>
+                                                    Tournament Name
+                                                </th>
+                                                <th>
+                                                    Number of players
+                                                </th>
+                                                <th>
+                                                    Players
+                                                </th>
+                                                <th>
+                                                    Start time
+                                                </th>
+                                                <th>
+                                                    Winner
+                                                </th>
+                                                <th>
+                                                    Operation
+                                                </th>
+                                                </thead>
+                                                <tbody>
+                                                <% for(let i =0; i < matches.length; i++){ %>
+                                                    <tr>
 
-                                        <% } %>
-                                        </tbody>
-                                    </table>
-                                </div>
+                                                        <td>
+                                                            <%= i+1 %>
+                                                        </td>
+                                                        <td>
+                                                            <%= matches[i].mName %>
+                                                        </td>
+                                                        <td>
+                                                            <%= matches[i].mNumber %>
+                                                        </td>
+                                                        <td>
+                                                            <%= matches[i].mPlayers %>
+                                                        </td>
+                                                        <td>
+                                                            <%= matches[i].mActiveTime %>
+                                                        </td>
+                                                        <td class="text-primary">
+                                                            <select  mId="<%= matches[i]._id %>" name="mWinner<%= i + 1 %>" name="mWinner" id="mWinner<%= i %>">
+                                                                <% if(matches[i].mWinner === undefined) { %>
+                                                                    <option value="default">Choose Winner</option>
+                                                                <% } else { %>
+                                                                    <% console.log(matches[i].mWinner) %>
+                                                                    <option value="default"><%= matches[i].mWinner %></option>
+                                                                <% } %>
+
+                                                                <% for (var j = 0; j < matches[i].mPlayers.length; j++) {  %>
+                                                                    <option value="<%= matches[i].mPlayers[j] %>"><%= matches[i].mPlayers[j] %></option>
+                                                                <% } %>
+                                                            </select>
+                                                        </td>
+                                                        <td>
+                                                            <a href="/matches/modifyTournament/<%= matches[i]._id %>" class="btn btn-secondary btn-sm">Modify</a>
+                                                            <button mId="<%= matches[i]._id %>" mName="<%= matches[i].mName %>" id="delBtn"   class="btn btn-danger btn-sm">Delete</button>
+                                                        </td>
+
+                                                    </tr>
+
+                                                <% } %>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                <% } %>
+
                             </div>
                         </div>
                     </div>
@@ -263,14 +309,13 @@
 </div>
 <!--   Core JS Files   -->
 <script src="/public/js/jquery.min.js"></script>
-<script src="/public/js/bootstrap.min.js"></script>
 <script src="/public/js/popper.min.js"></script>
 <script src="/public/js/bootstrap-material-design.min.js"></script>
 <script src="/public/js/perfect-scrollbar.jquery.min.js"></script>
 <!-- Plugin for the momentJs  -->
 <script src="/public/js/moment.min.js"></script>
 <!--  Plugin for Sweet Alert -->
-<script src="/public/js/sweetalert2.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <!-- Forms Validations Plugin -->
 <script src="/public/js/jquery.validate.min.js"></script>
 <!-- Plugin for the Wizard, full documentation here: https://github.com/VinceG/twitter-bootstrap-wizard -->
@@ -308,9 +353,7 @@
 <script src="/public/js/sidebar.js"></script>
 <script src="/public/js/addTournament.js"></script>
 <script src="/public/js/spop.min.js"></script>
-<script src="https://unpkg.com/@popperjs/core@2"></script>
-<script src="https://unpkg.com/tippy.js@6"></script>
-
+<script src="/public/js/winnerSelect.js"></script>
 <script>
     $(document).ready(function() {
         // Javascript method's body can be found in assets/js/demos.js
@@ -318,7 +361,6 @@
 
     });
 </script>
-<script src="/public/js/showDetailsTip.js"></script>
 </body>
 
 </html>
