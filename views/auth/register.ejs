@@ -21,9 +21,13 @@
     <!--font awesome-->
     <link rel="stylesheet" href="/public/css/all.css">
     <link rel="stylesheet" href="/public/css/spop.min.css">
+    <link href="/public/css/spop.min.css" rel="stylesheet">
+    <link href="/public/css/custom.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@300&display=swap" rel="stylesheet">
     <style>
         body{
-            background: linear-gradient(to right, #08dbf7 0%, #f59419 100%);        
+            background: linear-gradient(to right, rgba(49,208,228, .3) 0%, rgba(245,148,25, .3) 100%);
         }
     </style>
 </head>
@@ -38,9 +42,10 @@
 
 <div class="row">
     <div class="col-md-4"></div>
-    <div class="col-md-4" >
+    <div class="col-md-4 formCenter">
         <!--show register form-->
-        <img src="/public/images/teamLogo.png" alt=""><p style="color: black; font-weight: bolder;">Welcome to the Incredible Tournament Website</p>
+        <img src="/public/images/teamLogo.png" alt="" class="displayLogo">
+        <span class="slogan">Welcome to TournaSmart</span>
         <h2 style="font-weight: bolder;">Register</h2>
         <form method="POST" autocomplete="off">
             <fieldset class="form-group">
@@ -87,8 +92,6 @@
 <script src="/public/js/perfect-scrollbar.jquery.min.js"></script>
 <!-- Plugin for the momentJs  -->
 <script src="/public/js/moment.min.js"></script>
-<!--  Plugin for Sweet Alert -->
-<script src="/public/js/sweetalert2.js"></script>
 <!-- Forms Validations Plugin -->
 <script src="/public/js/jquery.validate.min.js"></script>
 <!-- Plugin for the Wizard, full documentation here: https://github.com/VinceG/twitter-bootstrap-wizard -->
@@ -125,7 +128,6 @@
 <script src="/public/js/demo.js"></script>
 <script src="/public/js/sidebar.js"></script>
 <script src="/public/js/addTournament.js"></script>
-<script src="/public/js/spop.min.js"></script>
 <script>
     $(document).ready(function() {
         // Javascript method's body can be found in assets/js/demos.js
