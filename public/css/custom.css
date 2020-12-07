@@ -61,3 +61,14 @@ h5{
 #start-my-tournamentsBtn{
 	padding: 50px;
 }
+
+.displayLogo{
+	height: 60px;
+}
+.slogan{
+	font-family: 'Open Sans Condensed', sans-serif;
+	font-size: 26px;
+}
+.formCenter{
+	padding-top:100px;
+}

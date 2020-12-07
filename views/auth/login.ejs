@@ -21,10 +21,14 @@
     <!--font awesome-->
     <link rel="stylesheet" href="/public/css/all.css">
     <link rel="stylesheet" href="/public/css/spop.min.css">
+    <link rel="stylesheet" href="/public/css/custom.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@300&display=swap" rel="stylesheet">
 
     <style>
         body{
-            background: linear-gradient(to right, #08dbf7 0%, #f59419 100%);        }
+            background: linear-gradient(to right, rgba(49,208,228, .3) 0%, rgba(245,148,25, .3) 100%);
+        }
     </style>
 </head>
 
@@ -38,9 +42,10 @@
 
 <div class="row">
     <div class="col-md-4"></div>
-    <div class="col-md-4" >
+    <div class="col-md-4 formCenter">
         <!--show login form-->
-        <img src="/public/images/teamLogo.png" alt=""><p style="color: black; font-weight: bolder;">Welcome to the Incredible Tournament Website</p>
+        <img src="/public/images/teamLogo.png" alt="" class="displayLogo">
+        <span class="slogan">Welcome to TournaSmart</span>
         <h2 style="font-weight: bolder;">Login</h2>
         <form action="" method="POST" autocomplete="off">
             <fieldset class="form-group">
